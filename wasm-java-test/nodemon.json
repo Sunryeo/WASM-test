@@ -1,0 +1,9 @@
+{
+  "watch": ["../teaVM-testing/src/main/java"],
+  "ext": "java",
+  "ignore": ["../teaVM-testing/target/*"],
+  "delay": "500",
+  "events": {
+    "restart": "npm run build:wasm && npm run copy:wasm"
+  }
+}
