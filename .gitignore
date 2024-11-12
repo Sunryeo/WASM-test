@@ -6,6 +6,11 @@ target/
 *.jar
 *.ear
 *.iml
+/teaVM-testing/target/
+/teaVM-testing/target/teaVM-testing-1.0-SNAPSHOT/
+/teaVM-testing/target/generated-sources/
+/teaVM-testing/target/META-INF/
+/teaVM-testing/.idea/
 
 # Next.js
 .next/
