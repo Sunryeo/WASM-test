@@ -3,17 +3,14 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
-    "lint": "next lint"
-  },
-  "scripts": {
     "build:wasm": "cd ../teaVM-testing && mvn package",
     "copy:wasm": "copyfiles -f ../teaVM-testing/target/generated/js/teavm/classes.js* public/",
-    "watch:java": "nodemon --watch ../teaVM-testing/src/main/java --ext java --exec \"npm run build:wasm && npm run copy:wasm\"",
+    "transform:wasm": "node scripts/transform-classes.js",
+    "build:all": "npm run build:wasm && npm run copy:wasm && npm run transform:wasm",
+    "watch:java": "nodemon --watch ../teaVM-testing/src/main/java --ext java --exec \"npm run build:all\"",
     "dev": "concurrently \"npm run watch:java\" \"next dev\"",
-    "build": "npm run build:wasm && npm run copy:wasm && next build"
+    "dev:next": "next dev",
+    "build": "npm run build:all && next build"
   },
   "dependencies": {
     "react": "19.0.0-rc-02c0e824-20241028",
